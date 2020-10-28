@@ -38,9 +38,9 @@ class Users
     private $email;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Client::class, inversedBy="users")
+     * @ORM\ManyToOne(targetEntity=Client::class, inversedBy="users", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
-     * @Groups({"listuser", "detailuser"})
+     * @Groups({"listuser"})
      */
     private $client;
 

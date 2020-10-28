@@ -31,7 +31,7 @@ class MobileController extends AbstractController
 
 
     /**
-     * @Route("/mobile/{id}", name="mobile_detail", methods={"GET"})
+     * @Route("/mobile/{id}", name="mobile_details", methods={"GET"})
      * Permet afficher détail d'un téléphone
     */
     public function show(Mobiles $mobile, SerializerInterface $serializer)

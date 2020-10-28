@@ -17,15 +17,14 @@ class Client
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"listclient"})
+     * @Groups({"listclient", "detailuser"})
      * 
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"listclient"})
-     * 
+     * @Groups({"listclient", "detailuser"})
      */
     private $name;
 
@@ -38,14 +37,14 @@ class Client
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"listclient"})
+     * @Groups({"listclient", "detailuser"})
      * 
      */
     private $email;
 
     /**
      * @ORM\OneToMany(targetEntity=Users::class, mappedBy="client")
-     * @Groups({"listclient"})
+     * @Groups({"listclient", "detailuser"})
      *
      */
     private $users;
