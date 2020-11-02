@@ -2,8 +2,8 @@
 
 namespace App\Entity;
 
-use App\Repository\MobilesRepository;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\MobilesRepository;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
@@ -11,6 +11,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 /**
  * @ORM\Entity(repositoryClass=MobilesRepository::class)
  * @UniqueEntity("name",message="Un mobile porte déjà ce nom")
+ * 
 */
 class Mobiles
 {
@@ -24,6 +25,7 @@ class Mobiles
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\Length(min=5,max=15,minMessage="5 caractères minimum requis",maxMessage="15 caractères maximum requis")
+     * 
      */
     private $marque;
 

@@ -5,13 +5,19 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\ClientRepository;
 use Doctrine\Common\Collections\Collection;
+use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass=ClientRepository::class)
+ * @ApiResource
+ * @UniqueEntity(fields={"email"},
+ * message="ce mail est déjà utilisé, veuillez en saisir un autre")
  */
-class Client
+class Client implements UserInterface
 {
     /**
      * @ORM\Id
@@ -42,18 +48,7 @@ class Client
      */
     private $email;
 
-    /**
-     * @ORM\OneToMany(targetEntity=Users::class, mappedBy="client")
-     * @Groups({"listclient", "detailuser"})
-     *
-     */
-    private $users;
-
-    public function __construct()
-    {
-        $this->users = new ArrayCollection();
-    }
-
+   
     public function getId(): ?int
     {
         return $this->id;
@@ -95,34 +90,26 @@ class Client
         return $this;
     }
 
-    /**
-     * @return Collection|Users[]
-     */
-    public function getUsers(): Collection
+
+    public function getUsername()
     {
-        return $this->users;
+        return $this->email;
     }
 
-    public function addUser(Users $user): self
-    {
-        if (!$this->users->contains($user)) {
-            $this->users[] = $user;
-            $user->setClient($this);
-        }
 
-        return $this;
+    
+    public function getSalt()
+    {
+        return null;
     }
 
-    public function removeUser(Users $user): self
-    {
-        if ($this->users->contains($user)) {
-            $this->users->removeElement($user);
-            // set the owning side to null (unless already changed)
-            if ($user->getClient() === $this) {
-                $user->setClient(null);
-            }
-        }
 
-        return $this;
+    public function getRoles()
+    {
+        return array('ROLE_USER');
+    }
+
+    public function eraseCredentials()
+    {
     }
 }
