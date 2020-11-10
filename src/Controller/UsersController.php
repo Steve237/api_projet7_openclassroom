@@ -104,12 +104,9 @@ class UsersController extends AbstractController
     }
 
 
-
-
-
-      /**
+    /**
      * @Route("/user/{id}", name="update_user", methods={"PUT"})
-     * Permet d'apporter des modifications à un client et au client auquel il est rattaché
+     * Permet d'apporter des modifications à un user
     */
     public function updateUser(Users $user, ClientRepository $clientRepo, SerializerInterface $serializer, Request $request, EntityManagerInterface $entity, ValidatorInterface $validator)
     {
