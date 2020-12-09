@@ -5,6 +5,7 @@ namespace App\DataFixtures;
 use Faker\Factory;
 use App\Entity\Users;
 use App\Entity\Client;
+use App\Entity\Mobiles;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -32,31 +33,41 @@ class AppFixtures extends Fixture
     public function load(ObjectManager $manager)
     {
         $client1 = new Client();
+        $roleUser[] = Client::ROLE_USER;
         $client1->setName("Mark Tel")
                 ->setEmail("essonoadou@gmail.com")
-                ->setPassword($this->encoder->encodePassword($client1, $client1->getName()));
+                ->setPassword($this->encoder->encodePassword($client1, $client1->getName()))
+                ->setRoles($roleUser);
         $manager->persist($client1);
         
         
         
         $client2 = new Client();
+        $roleUser[] = Client::ROLE_USER;
         $client2->setName("Iphone Store")
             ->setEmail("essono237@gmail.com")
-            ->setPassword($this->encoder->encodePassword($client2, $client2->getName()));
+            ->setPassword($this->encoder->encodePassword($client2, $client2->getName()))
+            ->setRoles($roleUser);
         $manager->persist($client2);
                 
                 
         $client3 = new Client();
+        $roleUser[] = Client::ROLE_USER;
+
         $client3->setName("Iphone Place")
             ->setEmail("steve237@gmail.com")
-            ->setPassword($this->encoder->encodePassword($client3, $client3->getName()));
+            ->setPassword($this->encoder->encodePassword($client3, $client3->getName()))
+            ->setRoles($roleUser);
         $manager->persist($client3);
                     
                     
         $client4 = new Client();
+        $roleUser[] = Client::ROLE_USER;
+
         $client4->setName("Iphone Place")
             ->setEmail("steve237@gmail.com")
-            ->setPassword($this->encoder->encodePassword($client4, $client4->getName()));
+            ->setPassword($this->encoder->encodePassword($client4, $client4->getName()))
+            ->setRoles($roleUser);
         $manager->persist($client4);
 
 
@@ -84,6 +95,7 @@ class AppFixtures extends Fixture
                 ->setEmail("adouessono@yahoo.fr")
                 ->setClient($client4);
         $manager->persist($user4);
+
         
         
         

@@ -36,6 +36,8 @@ class MobileController extends AbstractController
     */
     public function show(Mobiles $mobile, SerializerInterface $serializer)
     {
+        $this->denyAccessUnlessGranted('ROLE_');
+        
         $resultat = $serializer->serialize($mobile, 'json');
 
         return new JsonResponse($resultat, 200, [], true);

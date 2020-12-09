@@ -4,13 +4,45 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\MobilesRepository;
+use ApiPlatform\Core\Annotation\ApiResource;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-
+use Symfony\Component\VarDumper\Cloner\Data;
 
 /**
  * @ORM\Entity(repositoryClass=MobilesRepository::class)
  * @UniqueEntity("name",message="Un mobile porte déjà ce nom")
+ * @ApiResource(collectionOperations={
+ *         "get"={
+ *          "method"="GET",
+ *          "path"="/mobiles",
+ *          },
+ *          "post"={
+ *              "method"="POST",
+ *              "access_control"="is_granted('ROLE_ADMIN')",
+ *              "access_control_message"="Vous n'avez pas le droit d'accès à cette ressource"
+ *              }      
+ *          },
+ *         itemOperations={
+*          "get"={
+*          "method"="GET",
+*          "path"="mobile/{id}"
+ *          },
+ *         "put_item_role_admin"={
+*          "method"="PUT",
+*          "path"="/mobile/{id}",
+*          "access_control"="is_granted('ROLE_ADMIN')", 
+*           "access_control_message"="Vous n'avez pas accès à cette ressource"
+*          },
+*          "delete"={
+*          "method"="DELETE",
+*          "path"="/mobile/{id}",
+*          "access_control"="is_granted('ROLE_ADMIN')", 
+*          "access_control_message"="Vous n'avez pas accès à cette ressource"
+ *          },
+ *          
+ *      }
+ * )
  * 
 */
 class Mobiles
@@ -70,6 +102,11 @@ class Mobiles
      * @ORM\Column(type="string", length=255)
      */
     private $picture;
+
+    public function __construct()
+    {   //permet d'ajouter automatiquement la date lors de la creation du mobile
+        $this->creationdate = new \DateTime();
+    }
 
     public function getId(): ?int
     {

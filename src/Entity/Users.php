@@ -7,9 +7,38 @@ use App\Repository\UsersRepository;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Symfony\Component\Serializer\Annotation\Groups;
 
+
 /**
  * @ORM\Entity(repositoryClass=UsersRepository::class)
- * @ApiResource
+ * @ApiResource(collectionOperations={
+ *          "get_all_user"={
+ *          "method"="GET",
+ *          "path"="/users/client",
+ *          },
+ *          "post"={
+ *              "method"="POST",
+ *              "access_control"="is_granted('ROLE_USER')",
+ *              "access_control_message"="Vous n'avez pas le droit d'accès à cette ressource"
+ *              }      
+ *          },
+ *          itemOperations={
+ *           "get_client_id"={
+ *          "method"="GET" 
+ *          },
+ *         "put_user"={
+ *          "method"="PUT",
+ *          "path"="/user/{id}",
+ *          "access_control"="(is_granted('ROLE_USER') and object.getClient() == user) or is_granted('ROLE_ADMIN')", 
+ *          "access_control_message"="Vous n'avez pas accès à cette ressource"
+ *          },
+ *         "delete"={
+ *          "method"="DELETE",
+ *          "path"="/user/{id}",
+ *          "access_control"="(is_granted('ROLE_USER') and object.getClient() == user) or is_granted('ROLE_ADMIN')", 
+ *          "security_message"="Vous n'êtes pas accès à cette ressource"
+ *          }
+ *      }
+ * )
  */
 class Users
 {
@@ -34,9 +63,8 @@ class Users
     private $email;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Client::class, inversedBy="users", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity=Client::class, inversedBy="users")
      * @ORM\JoinColumn(nullable=false)
-     * @Groups({"listuser"})
      */
     private $client;
 

@@ -58,10 +58,10 @@ class UsersController extends AbstractController
      * @Route("/client/{id}", name="user", methods={"GET"})
      * Permet afficher détail d'un user lié à un client
     */
-    public function showUser(Client $user, SerializerInterface $serializer)
+    public function showUser(Client $client, SerializerInterface $serializer)
     {
         $resultat = $serializer->serialize(
-            $user, 
+            $client, 
             'json',
             [
                 'groups'=>['detailuser']
@@ -167,7 +167,7 @@ class UsersController extends AbstractController
 
     /**
      * @Route("/user/{id}", name="user_delete", methods={"DELETE"})
-     * Permet de supprimer un téléphone
+     * Permet de supprimer un user
     */
     public function delete(Users $user, EntityManagerInterface $entity)
     {   
@@ -179,7 +179,5 @@ class UsersController extends AbstractController
         return new JsonResponse('{"success":"true"}',Response::HTTP_OK,[]);
 
     }
-
-
 
 }
