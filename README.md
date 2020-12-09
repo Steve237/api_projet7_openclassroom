@@ -14,7 +14,7 @@ Pour le faire tourner sur votre machine en local, vous pouvez
 installer MAMP (ou WAMP pour Windows, ou LAMP pour Linux).
 
 1. Vous devez ensuite importer le fichier sql contenant les données du projet dans votre base de données. 
-Il s'agit du fichier api7.sql que vous trouverez dans le dossier public à la racine du projet.
+Il s'agit du fichier api7.sql que vous trouverez à la racine du projet.
 
 2. Ensuite, configurez la connexion du projet à votre base de données dans le fichier .env à la racine du projet, selon l'exemple suivant:
 DATABASE_URL=mysql://username:password@127.0.0.1:3306/api7
