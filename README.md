@@ -9,6 +9,9 @@ Prérequis
 +PostMan
 
 ##Installation
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/05bd8ac526184bbda8467fd368f68314)](https://app.codacy.com/gh/Steve237/api_projet7_openclassroom?utm_source=github.com&utm_medium=referral&utm_content=Steve237/api_projet7_openclassroom&utm_campaign=Badge_Grade)
+
 Pour installer le projet, vous devez le cloner ou le télécharger, puis l'ouvrir via votre éditeur de texte. 
 Pour le faire tourner sur votre machine en local, vous pouvez
 installer MAMP (ou WAMP pour Windows, ou LAMP pour Linux).
