@@ -37,3 +37,5 @@ Construit avec
 * [Symfony](https://symfony.com/): High performance PHP framework for web development
 * [API Platform](https://api-platform.com/): REST and GraphQL framework to build modern API-driven projects
 * JWT.
+
+Grade obtenu sur Codacy : [![Codacy Badge](https://app.codacy.com/project/badge/Grade/4ba2fcd4a3c546d89f7a4bd3bef5b67d)](https://www.codacy.com/gh/Steve237/api_projet7_openclassroom/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Steve237/api_projet7_openclassroom&amp;utm_campaign=Badge_Grade)
