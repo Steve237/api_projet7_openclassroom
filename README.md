@@ -2,7 +2,7 @@ Web service exposing an API
 
 Téléchargez ce projet ou clonez-le (Git clone)*
 
-##Prérequis
+Prérequis
 + PHP 7.2
 + MySQL
 + Symfony 4
@@ -33,7 +33,7 @@ et l'email de ce dernier. Par exemple :
     "email":"essonoadou@gmail.com"
 }
 
-##Construit avec
+Construit avec
 * [Symfony](https://symfony.com/): High performance PHP framework for web development
 * [API Platform](https://api-platform.com/): REST and GraphQL framework to build modern API-driven projects
 * JWT.
